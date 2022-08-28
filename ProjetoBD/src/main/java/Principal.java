@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -103,6 +106,9 @@ public class Principal extends javax.swing.JFrame {
             Abas.setEnabledAt(1, true);
             Abas.setSelectedIndex(1);
                     
+        } else{
+            JOptionPane.showMessageDialog(null, "Dados de Login Incorretos",
+                    "Mensagem", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
