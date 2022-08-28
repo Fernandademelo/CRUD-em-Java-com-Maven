@@ -14,6 +14,9 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        
+        Abas.setEnabledAt(1, false);
+        
     }
 
     /**
@@ -25,55 +28,82 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnOla = new javax.swing.JButton();
-        txtNome = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        txtResultado = new javax.swing.JLabel();
+        Abas = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        txtSenha = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
+        txtLogin = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        btnOla.setText("Resultado");
-        btnOla.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOlaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnOla);
-        btnOla.setBounds(150, 100, 90, 23);
-        getContentPane().add(txtNome);
-        txtNome.setBounds(150, 50, 200, 40);
+        jPanel1.setBackground(new java.awt.Color(216, 237, 237));
+        jPanel1.setLayout(null);
 
-        jLabel1.setText("Digite Aqui Seu Nome");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(200, 30, 102, 14);
+        jPanel3.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel3.setLayout(null);
+        jPanel3.add(txtSenha);
+        txtSenha.setBounds(70, 130, 150, 30);
 
-        txtResultado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        getContentPane().add(txtResultado);
-        txtResultado.setBounds(140, 140, 230, 20);
-
-        jButton1.setText("Apagar");
+        jButton1.setText("Entre");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(270, 100, 80, 23);
+        jPanel3.add(jButton1);
+        jButton1.setBounds(110, 170, 59, 23);
+        jPanel3.add(txtLogin);
+        txtLogin.setBounds(70, 60, 150, 30);
 
-        setBounds(0, 0, 522, 209);
+        jLabel1.setText("SENHA");
+        jPanel3.add(jLabel1);
+        jLabel1.setBounds(70, 100, 60, 20);
+
+        jLabel2.setText("LOGIN");
+        jPanel3.add(jLabel2);
+        jLabel2.setBounds(70, 30, 60, 20);
+
+        jPanel1.add(jPanel3);
+        jPanel3.setBounds(50, 20, 300, 210);
+
+        Abas.addTab("Login", jPanel1);
+
+        jPanel2.setBackground(new java.awt.Color(153, 153, 255));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 375, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 242, Short.MAX_VALUE)
+        );
+
+        Abas.addTab("Cadastro", jPanel2);
+
+        getContentPane().add(Abas);
+        Abas.setBounds(10, 10, 380, 270);
+
+        setBounds(0, 0, 416, 339);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnOlaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOlaActionPerformed
-txtResultado.setText("Ola! " + txtNome.getText());
-
-            // TODO add your handling code here:
-    }//GEN-LAST:event_btnOlaActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-txtResultado.setText("");
+        // TODO add your handling code here:
         
+        String senha = new String (txtSenha.getPassword());
+        
+        if (txtLogin.getText().equals("adm") && senha.equals("123") ) {
+            Abas.setEnabledAt(1, true);
+            Abas.setSelectedIndex(1);
+                    
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -112,10 +142,14 @@ txtResultado.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnOla;
+    private javax.swing.JTabbedPane Abas;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField txtNome;
-    private javax.swing.JLabel txtResultado;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JTextField txtLogin;
+    private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
 }
