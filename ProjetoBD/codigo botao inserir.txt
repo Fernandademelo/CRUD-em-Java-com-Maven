@@ -1,0 +1,23 @@
+try {
+Class.forName("com.mysql.jdbc.Driver");
+conn = DriverManager.getConnection("jdbc:mysql://localhost/dbaula4",
+"root", "123");
+stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+ResultSet.CONCUR_UPDATABLE);
+String sql = "INSERT INTO cursoVALUES(‘"
++ txtSigla.getText() + "’,’"
++ txtNome.getText() + "’,’"
++ txtDesc.getText() + "’)";
+JOptionPane.showMessageDialog(null, sql);
+int i = 0;
+i = stmt.executeUpdate(sql);//executando o comando sql    
+stmt.close();
+if (i > 0) {
+JOptionPane.showMessageDialog(null, "Curso cadastrado com sucesso!");
+abreTabela();
+}
+} catch (ClassNotFoundException e) {
+System.out.println(e);
+} catch (SQLException e) {
+System.out.println(e);
+}
