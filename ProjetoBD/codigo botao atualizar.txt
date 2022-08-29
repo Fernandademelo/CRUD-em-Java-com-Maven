@@ -1,0 +1,26 @@
+String query1 = "UPDATE curso SET sigla=";
+String a = txtSigla.getText();
+try {
+Class.forName("com.mysql.jdbc.Driver");
+conn = DriverManager.getConnection("jdbc:mysql://localhost/dbaula4", "root", "123");
+stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+ResultSet.CONCUR_UPDATABLE);
+String sql = query1 + "’" + txtSigla.getText() + "’,"
++ "nome=’" + txtNome.getText() + "’,"
++ "descricao=’" + txtDesc.getText()
++ "’ where sigla=" + "’" + txtSigla.getText() + "’";
+JOptionPane.showMessageDialog(null, sql);
+int i = 0;
+i = stmt.executeUpdate(sql);//executando o comando sql
+int y = 0;
+stmt.close();
+y = stmt.CLOSE_CURRENT_RESULT;
+if (i > 0) {
+JOptionPane.showMessageDialog(null, "Curso alterado com sucesso!");
+abreTabela();
+}
+} catch (ClassNotFoundException e) {
+System.out.println(e);
+} catch (SQLException e) {
+System.out.println(e);
+}

@@ -137,6 +137,11 @@ public class Principal extends javax.swing.JFrame {
         btnInserir.setBounds(100, 240, 70, 23);
 
         btnAtualizar.setText("Atualizar");
+        btnAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtualizarActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnAtualizar);
         btnAtualizar.setBounds(290, 240, 80, 23);
 
@@ -220,6 +225,35 @@ public class Principal extends javax.swing.JFrame {
             System.out.println(e);
         }
     }//GEN-LAST:event_btnInserirActionPerformed
+
+    private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
+        String query1 = "UPDATE curso SET sigla=";
+        String a = txtSigla.getText();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/dbaula4", "root", "root");
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+            String sql = query1 + "'" + txtSigla.getText() + "',"
+                    + "nome='" + txtNome.getText() + "',"
+                    + "descricao='" + txtDesc.getText()
+                    + "' where sigla=" + "'" + txtSigla.getText() + "'";
+            JOptionPane.showMessageDialog(null, sql);
+            int i = 0;
+            i = stmt.executeUpdate(sql);//executando o comando sql
+            int y = 0;
+            stmt.close();
+            y = stmt.CLOSE_CURRENT_RESULT;
+            if (i > 0) {
+                JOptionPane.showMessageDialog(null, "Curso alterado com sucesso!");
+                abreTabela();
+            }
+        } catch (ClassNotFoundException e) {
+            System.out.println(e);
+        } catch (SQLException e) {
+            System.out.println(e);
+        }       // TODO add your handling code here:
+    }//GEN-LAST:event_btnAtualizarActionPerformed
 
     /**
      * @param args the command line arguments
