@@ -164,7 +164,35 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
-        // TODO add your handling code here:
+
+        String query1 = "DELETE FROM curso WHERE(sigla=";
+
+        String a = txtSigla.getText();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/dbaula4",
+                    "root", "root");
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+            String sql = query1 + "'" + txtSigla.getText() + "')";
+            JOptionPane.showMessageDialog(null, sql);
+
+            int i = 0;
+            i = stmt.executeUpdate(sql);//executando o comando sql
+            stmt.close();
+            if (i > 0) {
+                JOptionPane.showMessageDialog(null, "Curso deletado com sucesso!");
+// limpando campos
+                txtSigla.setText("");
+                txtNome.setText("");
+                txtDesc.setText("");
+//abreTabela();
+            }
+        } catch (ClassNotFoundException e) {
+            System.out.println(e);
+        } catch (SQLException e) {
+            System.out.println(e);
+        }        // TODO add your handling code here:
     }//GEN-LAST:event_btnDeletarActionPerformed
 
     private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed

@@ -1,0 +1,26 @@
+String query1 = "DELETE FROM curso WHERE(sigla=";
+String a = txtSigla.getText();
+try {
+Class.forName("com.mysql.jdbc.Driver");
+conn = DriverManager.getConnection("jdbc:mysql://localhost/dbaula4",
+"root", "123");
+stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+ResultSet.CONCUR_UPDATABLE);
+String sql = query1 + "'" + txtSigla.getText() + "')";
+JOptionPane.showMessageDialog(null, sql);
+int i = 0;
+i = stmt.executeUpdate(sql);//executando o comando sql
+stmt.close();
+if (i > 0) {
+JOptionPane.showMessageDialog(null, "Curso deletado com sucesso!");
+// limpando campos
+txtSigla.setText("");
+txtNome.setText("");
+txtDesc.setText("");
+abreTabela();
+}
+} catch (ClassNotFoundException e) {
+System.out.println(e);
+} catch (SQLException e) {
+System.out.println(e);
+}
