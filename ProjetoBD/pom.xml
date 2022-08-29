@@ -5,6 +5,13 @@
     <artifactId>ProjetoBD</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.26</version>
+        </dependency>
+    </dependencies>
     <properties>
     
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -13,3 +20,4 @@
     </properties>
     
 </project>
+  

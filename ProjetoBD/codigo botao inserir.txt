@@ -5,9 +5,9 @@ conn = DriverManager.getConnection("jdbc:mysql://localhost/dbaula4",
 stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
 ResultSet.CONCUR_UPDATABLE);
 String sql = "INSERT INTO cursoVALUES(‘"
-+ txtSigla.getText() + "’,’"
-+ txtNome.getText() + "’,’"
-+ txtDesc.getText() + "’)";
++ txtSigla.getText() + "','"
++ txtNome.getText() + "','"
++ txtDesc.getText() + "')";
 JOptionPane.showMessageDialog(null, sql);
 int i = 0;
 i = stmt.executeUpdate(sql);//executando o comando sql    

@@ -13,14 +13,20 @@ import javax.swing.JPasswordField;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
-
-public class ProjetoDB extends JFrame {
+import java.awt.Font;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;public class Principal extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtLogin;
 	private JPasswordField txtSenha;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField txtSigla;
+	private JTextField txtNome;
+
 
 	/**
 	 * Launch the application.
@@ -29,7 +35,7 @@ public class ProjetoDB extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ProjetoDB frame = new ProjetoDB();
+					Principal frame = new Principal();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,13 +43,20 @@ public class ProjetoDB extends JFrame {
 			}
 		});
 	}
-
+	
+	public Connection conn = null;
+    public Statement stmt;
+    public ResultSet rs;
 	/**
 	 * Create the frame.
 	 */
-	public ProjetoDB() {
+	public Principal() {
+		
+		
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 404);
 		contentPane = new JPanel();
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
@@ -53,31 +66,33 @@ public class ProjetoDB extends JFrame {
 		Principal.setLayout(null);
 		
 		JTabbedPane Abas = new JTabbedPane(JTabbedPane.TOP);
-		Abas.setBounds(0, 0, 345, 239);
+		Abas.setBounds(0, 0, 424, 365);
 		Principal.add(Abas);
 		
+		
 		JPanel Login = new JPanel();
-		Login.setLayout(null);
 		Abas.addTab("Login", null, Login, null);
+		Login.setLayout(null);
 		
 		txtLogin = new JTextField();
+		txtLogin.setBounds(159, 119, 133, 20);
 		txtLogin.setColumns(10);
-		txtLogin.setBounds(157, 72, 133, 20);
 		Login.add(txtLogin);
 		
 		txtSenha = new JPasswordField();
-		txtSenha.setBounds(157, 103, 133, 20);
+		txtSenha.setBounds(159, 150, 133, 20);
 		Login.add(txtSenha);
 		
 		JLabel lblNewLabel = new JLabel("Login");
-		lblNewLabel.setBounds(111, 75, 46, 14);
+		lblNewLabel.setBounds(113, 122, 46, 14);
 		Login.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Senha");
-		lblNewLabel_1.setBounds(111, 106, 46, 14);
+		lblNewLabel_1.setBounds(113, 153, 46, 14);
 		Login.add(lblNewLabel_1);
 		
 		JButton btnEntrar = new JButton("Entrar");
+		btnEntrar.setBounds(156, 195, 89, 23);
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String senha = new String(txtSenha.getPassword());
@@ -92,25 +107,47 @@ public class ProjetoDB extends JFrame {
 		        }
 			}
 		});
-		btnEntrar.setBounds(154, 148, 89, 23);
 		Login.add(btnEntrar);
 		
 		JPanel Cadastro = new JPanel();
+		
 		Abas.addTab("Cadastro", null, Cadastro, null);
 		Cadastro.setLayout(null);
+        
+		txtSigla = new JTextField();
+		txtSigla.setBounds(51, 55, 260, 20);
+		Cadastro.add(txtSigla);
+		txtSigla.setColumns(10);
 		
-		textField = new JTextField();
-		textField.setBounds(51, 34, 173, 20);
-		Cadastro.add(textField);
-		textField.setColumns(10);
+		JTextArea txtDesc = new JTextArea();
+		txtDesc.setBounds(51, 167, 260, 93);
+		Cadastro.add(txtDesc);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(51, 78, 173, 20);
-		Cadastro.add(textField_1);
-		textField_1.setColumns(10);
+		txtNome = new JTextField();
+		txtNome.setColumns(10);
+		txtNome.setBounds(51, 111, 260, 20);
+		Cadastro.add(txtNome);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(51, 107, 199, 93);
-		Cadastro.add(textArea);
+		JLabel lblNewLabel_2 = new JLabel("Sigla");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lblNewLabel_2.setBounds(51, 30, 46, 14);
+		Cadastro.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("Nome");
+		lblNewLabel_3.setBounds(51, 86, 46, 14);
+		Cadastro.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_5 = new JLabel("Descrição");
+		lblNewLabel_5.setBounds(51, 142, 46, 14);
+		Cadastro.add(lblNewLabel_5);
+		
+		JButton btnInserir = new JButton("Inserir");
+		btnInserir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		btnInserir.setBounds(51, 281, 89, 23);
+		Cadastro.add(btnInserir);
 	}
 }

@@ -95,9 +95,9 @@ public class Principal extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 153, 204));
         jPanel2.setLayout(null);
         jPanel2.add(txtSigla);
-        txtSigla.setBounds(100, 30, 270, 20);
+        txtSigla.setBounds(100, 20, 270, 30);
         jPanel2.add(txtNome);
-        txtNome.setBounds(100, 70, 270, 20);
+        txtNome.setBounds(100, 60, 270, 30);
 
         txtDesc.setColumns(20);
         txtDesc.setRows(5);
@@ -171,10 +171,10 @@ public class Principal extends javax.swing.JFrame {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost/dbaula4",
-                    "root", "123");
+                    "root", "root");
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                     ResultSet.CONCUR_UPDATABLE);
-            String sql = "INSERT INTO curso VALUES(‘"
+            String sql = "INSERT INTO curso VALUES('"
                     + txtSigla.getText() + "','"
                     + txtNome.getText() + "','"
                     + txtDesc.getText() + "')";
